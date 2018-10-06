@@ -5,37 +5,39 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class run {
+    //Lists to store the information
     private static ArrayList<String> Deployables = new ArrayList<>();
     private static ArrayList<String> Heists = new ArrayList<>();
     private static ArrayList<String> PrimaryWeapons = new ArrayList<>();
     private static ArrayList<String> SecondaryWeapons = new ArrayList<>();
     private static ArrayList<String> ThrowableWeapons = new ArrayList<>();
-
+    //keeps track of the selected items currently
     private static String selectedDeployable;
     private static String selectedHeist;
     private static String selectedPrimary;
     private static String selectedSecondary;
     private static String selectedThrowable;
-
+    //keeps a reference to the panel and the frame
     private static JFrame frame = new JFrame();
-    private static JPanel oldPanel = new JPanel();
-
+    private static JPanel currentPanel = new JPanel();
+    //tracks where the stealth missions start in the file and if the user wants them included
     private static int StealthIndexStart;
     private static boolean stealth = false;
 
     public static void main(String[] args){
+        //sets up the frame
         frame.setTitle("Payday 2 Roulette");
         frame.setSize(300, 300);
         frame.setResizable(false);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
+        //populates the lists and randomizes the first time for the users
         populateLists();
         randomizeAll();
-
+        //adds the panel to the frame
         addPanel(createPanel());
     }
 
-    private static void populateLists(){
+    private static void populateLists(){ //reads the files and populates the various lists
         try {
             String deployablesLocation = "Deployables.txt";
             BufferedReader br = new BufferedReader(new FileReader(new File(deployablesLocation)));
@@ -137,22 +139,22 @@ public class run {
 
         panel.add(con);
         return panel;
-    }
+    }//creates the panel and the basic UI
 
     private static void randomizePrimary(){
         selectedPrimary = PrimaryWeapons.get(randomInt(PrimaryWeapons.size()));
         addPanel(createPanel());
-    }
+    }//randomises the selection for the primary weapon
 
     private static void randomizeSecondary(){
         selectedSecondary = SecondaryWeapons.get(randomInt(SecondaryWeapons.size()));
         addPanel(createPanel());
-    }
+    }//randomises the selection for the secondary weapon
 
     private static void randomizeThrowable(){
         selectedThrowable = ThrowableWeapons.get(randomInt(ThrowableWeapons.size()));
         addPanel(createPanel());
-    }
+    }//randomises the selection for the throwable weapon
 
     private static void randomizeHeist(){
         int randInt;
@@ -161,12 +163,12 @@ public class run {
         }while (!((randInt != StealthIndexStart && stealth) || (randInt < StealthIndexStart && !stealth)));
         selectedHeist = Heists.get(randInt);
         addPanel(createPanel());
-    }
+    }//randomises the selection for the heist
 
     private static void randomizeDeployable(){
         selectedDeployable = Deployables.get(randomInt(Deployables.size()));
         addPanel(createPanel());
-    }
+    }//randomises the selection for the deployable item
 
     private static void randomizeAll(){
         randomizeHeist();
@@ -175,20 +177,20 @@ public class run {
         randomizeThrowable();
         randomizeDeployable();
         addPanel(createPanel());
-    }
+    }//randomises the selection for the all of the options
 
     private static int randomInt(int max){
         Random random = new Random();
         return random.nextInt(max);
-    }
+    }//creates a random int from 0 to the max number
 
     private static void addPanel(JPanel panel){
-        if(oldPanel != null){
-            frame.remove(oldPanel); //keeps track of the old panel to remove it on updating the frame
+        if(currentPanel != null){
+            frame.remove(currentPanel); //keeps track of the old panel to remove it on updating the frame
         }
-        oldPanel = panel;
+        currentPanel = panel;
         frame.add(panel);
         frame.repaint();
         frame.setVisible(true);
-    }
+    }//adds the panel to the frame and updates the reference to the current panel.
 }
