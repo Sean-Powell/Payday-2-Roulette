@@ -21,7 +21,7 @@ public class run {
     private static JFrame frame = new JFrame();
     private static JPanel currentPanel = new JPanel();
     //tracks where the stealth missions start in the file and if the user wants them included
-    private static int StealthIndexStart;
+    private static int StealthIndexStart = Integer.MAX_VALUE;
     private static boolean stealth = false;
 
     public static void main(String[] args){
