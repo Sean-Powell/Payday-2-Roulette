@@ -21,7 +21,7 @@ GO Bank
 Goat Simulator
 Golden Grin Casino
 Green Bridge
-Heat Steet
+Heat Street
 Henry's Rock
 Hotline Miami
 Hoxton Breakout
@@ -50,7 +50,7 @@ The Bomb: Forest
 The Diamond
 Transport
 Transport: Train Heist
-Ukranian Job
+Ukrainian Job
 Undercover
 Watchdogs
 White Xmas
