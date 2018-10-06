@@ -1,0 +1,16 @@
+Stoic's Hip Flask
+Injector
+Javelin
+Ace of Spades
+Shuriken
+Throwing Axe
+Throwing Knife
+HEF Grenade
+Frag Grenade
+Matyoshka Grenade
+Gas Dispenser
+Dynamite
+Smoke Bomb
+Concussion Grenade
+Molotov Cocktail
+Incendiary Grenade
