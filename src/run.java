@@ -51,7 +51,6 @@ public class run {
                     Heists.add(currentLine);
                 } else {
                     StealthIndexStart = i;
-                    System.out.println(i);
                 }
                 i++;
             }
